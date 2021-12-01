@@ -1,0 +1,118 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'login_navigation.html' %}
+<script>
+    function checkpass()
+    {
+        if(document.signup.pwd.value!=document.signup.cpwd.value)
+        {
+            alert('Password and Confirm Password doesnot match')
+            document.signup.cpwd.focus();
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+</script>
+<br><br><br><br><br><br>
+<h2>Doctor Signup</h2>
+<form method="POST" onsubmit="return checkpass();" name="signup" class="container mt-5" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div class="form-row">
+        <div class="form-group col-md-6" >
+            <label>First Name</label>
+            <input type="text" required name="fname" class="form-control" placeholder="Enter First Name">
+        </div>
+        <div class="form-group col-md-6" >
+            <label>Last Name</label>
+            <input type="text" required name="lname" class="form-control" placeholder="Enter Last Name">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6" >
+            <label>Contact</label>
+            <input type="text" name="contact" class="form-control" placeholder="Enter Contact">
+        </div>
+        <div class="form-group col-md-6" >
+            <label>Date of Birth</label>
+            <input type="date" name="dob" class="form-control" placeholder="Enter DOB">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12" >
+            <label>Email Id</label>
+            <input type="text" name="email" class="form-control" placeholder="Enter Email ID" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6" >
+            <label>Password</label>
+            <input type="password" name="pwd" class="form-control" placeholder="Enter Password" required>
+        </div>
+        <div class="form-group col-md-6" >
+            <label>Confirm Password</label>
+            <input type="password" name="cpwd" class="form-control" placeholder="Enter Password Again" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-12" >
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" placeholder="Enter Location" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-12" >
+            <label>Specialization</label>
+            <input type="text" name="specialization" class="form-control" placeholder="Enter specialization" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12" >
+            <label>Description</label>
+            <textarea type="text" name="remarks" class="form-control" required></textarea>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6" >
+            <label>Gender</label>
+            <div style="border:1px solid lightgrey; padding:6px; border-radius: 6px;">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" name="gender" id="customRadioInline1" class="custom-control-input" value="Male">
+                <label class="custom-control-label" for="customRadioInline1">Male</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" name="gender" id="customRadioInline2" class="custom-control-input" value="Female">
+                <label class="custom-control-label" for="customRadioInline2">Female</label>
+            </div>
+        </div>
+        </div>
+        <div class="form-group col-md-6" >
+            <label>Image</label>
+            <input type="file" name="image" class="form-control" required>
+        </div>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+
+{% ifequal error "no" %}
+<script>
+    alert("Signup Successfull");
+    window.location=('{% url 'doctor_login' %}');
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert("Something went wrong, Try Again...");
+</script>
+{% endifequal %}
+
+{% endblock %}

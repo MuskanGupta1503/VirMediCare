@@ -1,0 +1,67 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'user_navigation.html' %}
+
+<style>
+    .pagination {
+      display: inline-block;
+    }
+    
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+    }
+    
+    .pagination a.active {
+      background-color: #408bcc;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+    </style>
+    
+<div class="container ">
+    <h2 class="text-center" style="margin-top: 180px;">SEARCH A DOCTOR AND BOOK AN APPOINTMENT</h2>
+    <hr>
+
+    {% for doctor in page_obj %}
+
+    <!-- {{ doctor.user.first_name }}<br>
+    {{ doctor.location }}<br>
+    {{ doctor.specialization }}<br> -->
+
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{doctor.image.url}}" class="card-img" >
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Dr. {{ doctor.user.first_name }} {{ doctor.user.last_name }}</h5>
+              <p class="card-text">{{ doctor.specialization }}</p>
+              <p class="card-text">{{ doctor.gender }}</p>
+              <p class="card-text">{{ doctor.location }}</p>
+              <a href="{% url 'doctor_details' doctor.id %}" class="card-text btn btn-primary">BOOK AN APPOINTMENT</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+<div class="pagination">
+    <a href="?page=1">&laquo;</a>
+    {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>{% endif %}
+    <a href="?page={{ page_obj.number }}" class="active">{{ page_obj.number }}</a>
+    {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>{% endif %}
+    <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+  </div>
+  
+</div>
+{% endblock %}

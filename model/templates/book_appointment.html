@@ -1,0 +1,31 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'user_navigation.html' %}
+
+<div class="container shadow-lg py-2" style="margin-top: 200px;">
+    <form method="POST" >
+        {% csrf_token %}
+            <div class="form-row">
+                <label class="font-weight-bold;">Set Date</label>
+                <input type="date" name="appointmentdate" class="form-control">
+            </div>
+        <input type="submit" value="BOOK YOUR APPOINTMENT" class="btn btn-primary mt-2">
+    </form>
+</div>
+
+    {% ifequal error "no" %}
+    <script>
+        alert("Appointment Booked Successfully");
+        window.location=('{% url 'user_home' %}');
+    </script>
+    {% endifequal %}
+    
+    {% ifequal error "yes" %}
+    <script>
+        alert("Something went wrong, Try Again...");
+    </script>
+    {% endifequal %}
+
+{% endblock %}

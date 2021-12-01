@@ -1,0 +1,124 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'user_navigation.html' %}
+
+<br><br><br><br><br><br><br><br>
+<form method="POST" class="container mt-6">
+    {% csrf_token %}
+
+    <div class="row">
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>Age</span>
+                <input class="form-field" type="text" placeholder=" " name="Age">
+            </div>
+        </div>
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>cp</span>
+                <input class="form-field" type="text" placeholder=" " name="cp">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>Sex</span>
+                <input class="form-field" type="text" placeholder=" " name="Sex">
+            </div>
+        </div>
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>thalach</span>
+                <input class="form-field" type="text" placeholder=" " name="thalach">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>Treshbps</span>
+                <input class="form-field" type="text" placeholder=" " name="Treshbps">
+            </div>
+        </div>
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>exang</span>
+                <input class="form-field" type="text" placeholder=" " name="exang">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>Chol</span>
+                <input class="form-field" type="text" placeholder=" " name="Chol">
+            </div>
+        </div>
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>oldpeak</span>
+                <input class="form-field" type="text" placeholder=" " name="oldpeak">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>Fbs</span>
+                <input class="form-field" type="text" placeholder=" " name="Fbs">
+            </div>
+        </div>
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>ca</span>
+                <input class="form-field" type="text" placeholder=" " name="ca">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>Restecg</span>
+                <input class="form-field" type="text" placeholder=" " name="Restecg">
+            </div>
+        </div>
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>thal</span>
+                <input class="form-field" type="text" placeholder=" " name="thal">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <div class="form-group" style="margin-top: 20px">
+                <span>Slope</span>
+                <input class="form-field" type="text" placeholder=" " name="slope">
+            </div>
+        </div>
+    </div>
+    
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+<p>Result: {{data}}</p>
+
+<!-- {% ifequal error "no" %}
+<script>
+    alert("Job details has been added");
+    window.location=('{% url 'predictDisease' %}');
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert("Something went wrong, Try Again...");
+</script>
+{% endifequal %} -->
+
+
+{% endblock %}

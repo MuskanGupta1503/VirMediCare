@@ -1,0 +1,176 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'user_navigation.html' %}
+<div class="container" style="margin-top: 200px;">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div id="main">
+            <div class="row">
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Age</span>
+                        <input class="form-field" type="text" placeholder=" " name="age">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Sex</span>
+                        <input class="form-field" type="text" placeholder="0 for male, 1 for female" name="sex">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>On_thyroxine</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)" name="On_thyroxine">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Query_on_thyroxine</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)"
+                            name="Query_on_thyroxine">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>On_antithyroid_medication</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)"
+                            name="On_antithyroid_medication">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Sick</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)" name="Sick">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Pregnant</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)" name="Pregnant">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Thyroid surgery</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)"
+                            name="Thyroid_surgery">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>I131_treatment</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)" name="I131_treatment">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Query_hypothyroid</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)"
+                            name="Query_hypothyroid">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Query_hyperthyroid</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)"
+                            name="Query_hyperthyroid">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Lithium</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)" name="Lithium">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Goiter</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)" name="Goiter">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Tumor</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)" name="Tumor">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Hypopituitary</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)" name="Hypopituitary">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>Psych</span>
+                        <input class="form-field" type="text" placeholder="(1 = yes, 0 = no)" name="Psych">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>TSH</span>
+                        <input class="form-field" type="text" placeholder="in mIU/mL" name="TSH">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>T3</span>
+                        <input class="form-field" type="text" placeholder="in pg/dl" name="T3">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>TT4</span>
+                        <input class="form-field" type="text" placeholder="in ng/dl" name="TT4">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>T4U</span>
+                        <input class="form-field" type="text" placeholder="Thyroxine Utilization Rates" name="T4U">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="form-group" style="margin-top: 20px">
+                        <span>FTI</span>
+                        <input class="form-field" type="text" placeholder="Free Thyroxine Index" name="FTI">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <input clas="btn btn-primary" type="submit" value="Submit" >
+                <br>
+            </div>
+    </form>
+</div>
+{% if data %}
+<div class="overlay">
+    {{ data }}
+</div>
+{% endif%}
+{% endblock %}
