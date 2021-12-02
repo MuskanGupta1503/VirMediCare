@@ -37,4 +37,6 @@ urlpatterns = [
     path('heartdis',heartdis,name="heartdis"),
     path('thyroism',thyroism,name="thyroism"),
     path('diabetesr',diabetesr,name="diabetesr"),
+    path('healthnews',healthnews,name="healthnews"),
+    path('feedback',feedback,name="feedback"),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

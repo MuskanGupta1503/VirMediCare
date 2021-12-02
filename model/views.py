@@ -6,6 +6,8 @@ from .models import *
 from django.contrib.auth import authenticate,login, logout
 from datetime import date 
 from django.core.paginator import Paginator
+import requests
+import json
 
 # Importing libraries
 import numpy as np
@@ -218,6 +220,7 @@ def doctor_search(request):
     if not request.user.is_authenticated:
         return redirect('user_login')
     doctor = DoctorUser.objects.all()
+    print(doctor)
     paginator = Paginator(doctor, 3) # Show 25 contacts per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -370,3 +373,37 @@ def heartdis(request):
 
 def self_examine(request):
     return render(request,'self_examine.html')
+
+def healthnews(request):
+    r = requests.get('https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=37f4a01b63e64d80968ebcae04d6218d')
+    r=r.json()
+    # print(r['articles'][0]['title'])
+    count=0
+    context={}
+    context["article"]=[]
+    for article in r['articles']:
+        if count>5:
+            break
+        context["article"].append(article)
+        count+=1
+    return render(request,"healthnews.html",context)
+
+def feedback(request):
+    if not request.user.is_authenticated:
+        return redirect('user_login')
+    error=""
+    if request.method=='POST':
+        try:
+            print("enter try")
+            description=request.POST['feedback']
+            user=request.user
+            patient=PatientUser.objects.get(user=user)
+            date1=date.today()
+            Feedback.objects.create(applydate=date1,patient=patient,description=description)
+            print("feedback created")
+            error="no"
+        except:
+            print("enter EXCEPT")
+            error="yes"
+    d={'error':error}
+    return render(request,'feedback.html',d)

@@ -35,3 +35,10 @@ class Appointment(models.Model):
     appointmentdate = models.DateField()
     def _str_(self):
         return self.id 
+
+class Feedback(models.Model):
+    applydate=models.DateField()
+    patient=models.ForeignKey(PatientUser,on_delete=models.CASCADE)
+    description=models.CharField(max_length=200,null=True)
+    def _str_(self):
+        return self.id 

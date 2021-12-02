@@ -1,0 +1,30 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'user_navigation.html' %}
+<div class="container shadow-lg py-2" style="margin-top: 200px;">
+    
+    <h2 class="text-center" style="margin-top: 20px;">ANY SUGGESTIONS OR FEEDBACK? FEEL FREE TO WRITE</h2>
+    <hr>
+    <form action="" method="post"> 
+    {% csrf_token %}
+        <textarea name="feedback" class="form-control" placeholder="Any feedback" rows="10"></textarea>
+    <input type="submit" value="Submit"  class="mt-2 btn btn-primary" >
+    </form>
+</div>
+
+{% ifequal error "no" %}
+<script>
+    alert("Feedback added Successfull");
+    window.location=('{% url 'feedback' %}');
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert("Something went wrong, Try Again...");
+</script>
+{% endifequal %}
+
+{% endblock %}
